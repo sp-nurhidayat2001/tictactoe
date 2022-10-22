@@ -1,7 +1,7 @@
 module.exports = class Board {
 
     constructor() {
-        this.board = new Array(10).fill(' ')
+        this.board = new Array(10).fill('X')
     }
 
     // A method that displays the board
@@ -18,7 +18,38 @@ module.exports = class Board {
     }
 
     // A method to place a marker in the board
-    placeMarker(marker,position) {
+    placeMarker(marker, position) {
         this.board[position] = marker;
     }
+
+    // A method to check if a position is empty => return true if empty
+    positionIsEmpty(position) {
+        return this.board[position] == " ";
+    }
+
+    // A method to check win condition => returns true if win
+    checkWinCondition(marker) {
+        return (this.board[1] == marker && this.board[2] == marker && this.board[3] == marker) ||
+            (this.board[4] == marker && this.board[5] == marker && this.board[6] == marker) ||
+            (this.board[7] == marker && this.board[8] == marker && this.board[9] == marker) ||
+            (this.board[7] == marker && this.board[5] == marker && this.board[3] == marker) ||
+            (this.board[1] == marker && this.board[5] == marker && this.board[9] == marker) ||
+            (this.board[7] == marker && this.board[4] == marker && this.board[1] == marker) ||
+            (this.board[8] == marker && this.board[5] == marker && this.board[2] == marker) ||
+            (this.board[9] == marker && this.board[6] == marker && this.board[3] == marker)
+    }
+
+    // A method to check if there's a tie => returns true if it is a tie
+    checkTie() {
+        var isEmpty = false;
+        for(var i = 1;i<=9;i++) {
+            if(this.board[i] == " ") {
+                isEmpty = true;
+            }
+        }
+        // if isEmpty is true , means theres some positions that have not been played, else the board is filled.
+        return !isEmpty
+    }
+
+    
 }
