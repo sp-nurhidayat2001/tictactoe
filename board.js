@@ -4,7 +4,7 @@ module.exports = class Board {
     constructor() {
         this.board = new Array(10).fill(' ')
         this.current_marker = Math.floor(Math.random() * 2) ? "X" : "O"
-        console.log("Player " + this.current_marker + " goes first!.\n")
+        console.log("\nPlayer " + this.current_marker + " goes first!.\n")
     }
 
     // A method that displays the board
