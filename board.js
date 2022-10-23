@@ -4,11 +4,12 @@ module.exports = class Board {
     constructor() {
         this.board = new Array(10).fill(' ')
         this.current_marker = Math.floor(Math.random() * 2) ? "X" : "O"
-        console.log("\nPlayer " + this.current_marker + " goes first!.\n")
+        console.log("\nPlayer " + this.current_marker + " goes first!.")
     }
 
     // A method that displays the board
     displayBoard(player1,player2) {
+        console.log("")
         console.log(" " + player1 + " |" + "   | " + player2)
         console.log("")
         console.log("     |   |   ")
@@ -37,7 +38,7 @@ module.exports = class Board {
     getPosition() {
 
         while (true) {
-            var position = input.questionInt("Player " + this.current_marker + " enter a position 1 to 9: ")
+            var position = input.questionInt("\nPlayer " + this.current_marker + " enter a position 1 to 9: ")
             if (position > 9 || position < 1) {
                 console.log("Position out of bounds!.")
             } else if (!this.positionIsEmpty(position)) {
